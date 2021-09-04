@@ -1,0 +1,54 @@
+#!/bin/bash
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias pd+='pushd'
+alias pd-='popd'
+
+alias ls='ls --color'
+alias l='ls'
+alias ll='ls -l'
+alias la='ls -la'
+alias lt='ls -ltra'
+
+alias path='echo -e ${PATH//:/\\n}'
+alias sui='sudo -i'
+alias sul='sudo su -l'
+alias ntlp='sudo netstat -ntlp'
+alias zv='nc -zv'
+alias viro='vi -R'
+alias cls='clear'
+alias df='df -h'
+alias apug='tree -apug'
+
+alias igrep='grep -i'
+alias hgrep='history | grep'
+alias grep='grep --color=auto'
+alias zgrep='zgrep --color=auto'
+alias diff='diff --color'
+
+if command -v docker > /dev/null 2>&1; then
+	alias dco='docker container'
+	alias dim='docker image'
+	alias dvo='docker volume'
+	alias dne='docker network'
+	alias dlo='docker logs'
+	alias din='docker inspect'
+	alias dex='docker exec -it'
+	alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"'
+fi
+
+if command -v docker-compose > /dev/null 2>&1; then
+	alias doco='docker-compose'
+	alias docodown='docker-compose down'
+	alias docoup='docker-compose up'
+	alias docoupd='docker-compose up -d'
+	alias docore='docker-compose down && docker-compose up -d'
+	alias docolog='docker-compose logs'
+fi
+
+if command -v ansible-playbook > /dev/null 2>&1; then
+	alias ap='ansible-playbook'
+	alias apc='ansible-playbook --check'
+fi

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ "$TERM" = "linux" ]; then
+        PS1="\u@\h:\w$ "
+else
+        PS1="\u@\h:\w$ \[$(tput sgr0)\]"
+fi
+export PS1
+
+if ! shopt -q globstar; then
+	shopt -s globstar
+fi
+
+if ! shopt -q autocd; then
+	shopt -s autocd
+fi
+
+if [ ! -r ~/.dircolors ]; then
+	dircolors -p > ~/.dircolors 
+fi
+eval "$(dircolors -b ~/.dircolors)"

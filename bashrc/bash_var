@@ -1,0 +1,6 @@
+#!/bin/bash
+
+MANPATH="$(manpath -g):$HOME/.local/man"
+EDITOR=$(command -v vim)
+
+export MANPATH EDITOR
