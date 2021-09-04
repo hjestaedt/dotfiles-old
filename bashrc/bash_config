@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -o vi
+bind -m vi-insert "\C-l":clear-screen
+
 if [ "$TERM" = "linux" ]; then
         PS1="\u@\h:\w$ "
 else
