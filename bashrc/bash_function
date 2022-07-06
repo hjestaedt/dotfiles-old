@@ -11,3 +11,24 @@ tabname() {
 find_bin_dirs() {
         find "$1" -maxdepth 2 -follow -not -path '*/\.*' -type d -name bin -printf "%p:"
 }
+
+highlight() {
+  	# usage: highlight <token>
+
+	# highlight single token
+       	# cat <file> | highlight foo
+
+	# highlight multiple tokens
+	# cat <file> | highlight "foo\|bar"
+
+	# use with less -r to remain color
+	# cat <file> | highlight "foo\|bar" | less -r
+
+  	# foreground color: 30:black, 31:red, 32:green, 33:yellow, 34:blue, 35:magenta, 36:cyan
+  	# background color: 40:black, 41:red, 42:green, 43:yellow, 44:blue, 45:magenta, 46:cyan
+	COLOR=31
+	PATTERN="$1"
+  	ESCAPE=$(printf '\033')
+	
+	sed "s,${PATTERN},${ESCAPE}[${COLOR}m&${ESCAPE}[0m,g"
+}
