@@ -4,9 +4,10 @@
 # https://digitalfortress.tech/tutorial/setting-up-git-prompt-step-by-step/
 
 RED="\[\033[0;31m\]"
+BOLD="\[\033[1;30m\]"
 RESET='\[\033[0m\]'
   
-export PS1="\u@\h [${RED}\w${RESET}] \\$ \[$(tput sgr0)\]"
+export PS1="${BOLD}\u@\h${RESET} [${RED}\w${RESET}] \\$ \[$(tput sgr0)\]"
 
 if [ -f ~/.git-prompt.sh ]; then
   # * indicates that you have unstaged changes.
@@ -18,7 +19,7 @@ if [ -f ~/.git-prompt.sh ]; then
   # + would indicate that you have staged files.
   # $ would indicate that you have stashed files.
 
-  export PROMPT_COMMAND='__git_ps1 "\u@\h [${RED}\w${RESET}]" " \\\$ "'
+  export PROMPT_COMMAND='__git_ps1 "${BOLD}\u@\h${RESET} [${RED}\w${RESET}]" " \\\$ "'
   
   GIT_PS1_SHOWDIRTYSTATE=true
   GIT_PS1_SHOWSTASHSTATE=true
