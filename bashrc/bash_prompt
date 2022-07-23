@@ -1,0 +1,31 @@
+#!/bin/bash -x
+
+# https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+# https://digitalfortress.tech/tutorial/setting-up-git-prompt-step-by-step/
+
+RED="\[\033[0;31m\]"
+RESET='\033[0m'
+  
+export PS1="\u@\h [${RED}\w${RESET}] \\$ \[$(tput sgr0)\]"
+
+if [ -f ~/.git-prompt.sh ]; then
+  # * indicates that you have unstaged changes.
+  # % indicates that you have untracked files.
+  # = indicates that there is no difference between the head and the up-stream.  
+  # < would indicate that you are behind
+  # > would indicate that you are ahead 
+  # <> would indicate that you have diverged.
+  # + would indicate that you have staged files.
+  # $ would indicate that you have stashed files.
+
+  export PROMPT_COMMAND='__git_ps1 "\u@\h [${RED}\w${RESET}]" " \\\$ "'
+  
+  GIT_PS1_SHOWDIRTYSTATE=true
+  GIT_PS1_SHOWSTASHSTATE=true
+  GIT_PS1_SHOWUNTRACKEDFILES=true
+  GIT_PS1_SHOWUPSTREAM="auto"
+  GIT_PS1_HIDE_IF_PWD_IGNORED=true
+  GIT_PS1_SHOWCOLORHINTS=true
+  
+  . $HOME/.git-prompt.sh
+fi
