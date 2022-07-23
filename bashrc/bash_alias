@@ -57,6 +57,7 @@ alias mount='mount | column -t'
 alias vi=vim
 alias ping='ping -c 5'
 alias fastping='ping -c 10 -i .2'
+alias less='less -r'
 
 # colorization
 alias ls='ls --color=auto'

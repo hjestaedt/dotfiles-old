@@ -1,32 +1,31 @@
-#!/bin/bash -x
-
-# https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-# https://digitalfortress.tech/tutorial/setting-up-git-prompt-step-by-step/
+#!/bin/bash
+# shellcheck disable=SC1091,SC2034,SC2089,SC2090
 
 RED="\[\033[0;31m\]"
 BOLD="\[\033[1;30m\]"
 RESET='\[\033[0m\]'
   
-export PS1="${BOLD}\u@\h${RESET} [${RED}\w${RESET}] \\$ \[$(tput sgr0)\]"
+PS1="${BOLD}\u@\h${RESET} [${RED}\w${RESET}] \\$ \[$(tput sgr0)\]"; export PS1
 
-if [ -f ~/.git-prompt.sh ]; then
-  # * indicates that you have unstaged changes.
-  # % indicates that you have untracked files.
-  # = indicates that there is no difference between the head and the up-stream.  
-  # < would indicate that you are behind
-  # > would indicate that you are ahead 
-  # <> would indicate that you have diverged.
-  # + would indicate that you have staged files.
-  # $ would indicate that you have stashed files.
+if [ -f "$HOME/.git-prompt.sh" ]; then
+    # https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+    # https://digitalfortress.tech/tutorial/setting-up-git-prompt-step-by-step/
 
-  export PROMPT_COMMAND='__git_ps1 "${BOLD}\u@\h${RESET} [${RED}\w${RESET}]" " \\\$ "'
-  
-  GIT_PS1_SHOWDIRTYSTATE=true
-  GIT_PS1_SHOWSTASHSTATE=true
-  GIT_PS1_SHOWUNTRACKEDFILES=true
-  GIT_PS1_SHOWUPSTREAM="auto"
-  GIT_PS1_HIDE_IF_PWD_IGNORED=true
-  GIT_PS1_SHOWCOLORHINTS=true
-  
-  . $HOME/.git-prompt.sh
+    # * indicates that you have unstaged changes.
+    # % indicates that you have untracked files.
+    # = indicates that there is no difference between the head and the up-stream.  
+    # < would indicate that you are behind
+    # > would indicate that you are ahead 
+    # <> would indicate that you have diverged.
+    # + would indicate that you have staged files.
+    # $ would indicate that you have stashed files.
+
+    PROMPT_COMMAND='__git_ps1 "${BOLD}\u@\h${RESET} [${RED}\w${RESET}]" " \\\$ "'; export PROMPT_COMMAND
+    GIT_PS1_SHOWDIRTYSTATE=true
+    GIT_PS1_SHOWSTASHSTATE=true
+    GIT_PS1_SHOWUNTRACKEDFILES=true
+    GIT_PS1_SHOWUPSTREAM="auto"
+    GIT_PS1_HIDE_IF_PWD_IGNORED=true
+    GIT_PS1_SHOWCOLORHINTS=true
+    . "$HOME/.git-prompt.sh"
 fi
