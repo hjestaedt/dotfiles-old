@@ -1,8 +1,8 @@
 #!/bin/bash
-# shellcheck disable=SC1091,SC2034,SC2089,SC2090
 
 BOLD="\[\033[1;39m\]"
 RED="\[\033[0;31m\]"
 RST='\[\033[0m\]'
   
 PS1="${BOLD}\u@\h${RST} [${RED}\w${RST}] \\$ \[$(tput sgr0)\]"; export PS1
+
