@@ -1,34 +1,37 @@
 #!/bin/bash
 
 tabname() {
-	if [ -z "$BACKUP" ]; then
-		BACKUP=$PS1
-	fi
-	TITLE="\[\e]2;$*\a\]"
-	PS1=${BACKUP}${TITLE}
+    if [ -z "$BACKUP" ]; then
+    	BACKUP=$PS1
+    fi
+    TITLE="\[\e]2;$*\a\]"
+    PS1=${BACKUP}${TITLE}
 }
 
 find_bin_dirs() {
-        find "$1" -maxdepth 2 -follow -not -path '*/\.*' -type d -name bin -printf "%p:"
+    find "$1" -maxdepth 2 -follow -not -path '*/\.*' -type d -name bin -printf "%p:"
 }
 
 highlight() {
-  	# usage: highlight <token>
+  # usage: highlight <token>
+    # highlight single token
+    # cat <file> | highlight foo
 
-	# highlight single token
-       	# cat <file> | highlight foo
+    # highlight multiple tokens
+    # cat <file> | highlight "foo\|bar"
 
-	# highlight multiple tokens
-	# cat <file> | highlight "foo\|bar"
+    # use with less -r to remain color
+    # cat <file> | highlight "foo\|bar" | less -r
 
-	# use with less -r to remain color
-	# cat <file> | highlight "foo\|bar" | less -r
-
-  	# foreground color: 30:black, 31:red, 32:green, 33:yellow, 34:blue, 35:magenta, 36:cyan
-  	# background color: 40:black, 41:red, 42:green, 43:yellow, 44:blue, 45:magenta, 46:cyan
-	COLOR=31
-	PATTERN="$1"
-  	ESCAPE=$(printf '\033')
+    # foreground color: 30:black, 31:red, 32:green, 33:yellow, 34:blue, 35:magenta, 36:cyan
+    # background color: 40:black, 41:red, 42:green, 43:yellow, 44:blue, 45:magenta, 46:cyan
+    COLOR=31
+    PATTERN="$1"
+    ESCAPE=$(printf '\033')
 	
-	sed "s,${PATTERN},${ESCAPE}[${COLOR}m&${ESCAPE}[0m,g"
+    sed "s,${PATTERN},${ESCAPE}[${COLOR}m&${ESCAPE}[0m,g"
+}
+
+m() {
+    python3 -c "from math import *; print($*)"
 }
