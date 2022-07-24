@@ -1,14 +1,13 @@
 #!/bin/bash
 
+# enable vi-mode
 set -o vi
+
+# enable ctrl-l in vi-mode
 bind -m vi-insert "\C-l":clear-screen
 
-if [ "$TERM" = "linux" ]; then
-        PS1="\u@\h:\w$ "
-else
-        PS1="\u@\h:\w$ \[$(tput sgr0)\]"
-fi
-export PS1
+# ignore file on path completion with cd
+complete -d cd
 
 if ! shopt -q globstar; then
 	shopt -s globstar
@@ -22,3 +21,4 @@ if [ ! -r ~/.dircolors ]; then
 	dircolors -p > ~/.dircolors 
 fi
 eval "$(dircolors -b ~/.dircolors)"
+
