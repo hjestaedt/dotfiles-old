@@ -1,11 +1,7 @@
 #!/bin/bash
 
 tabname() {
-    if [ -z "$BACKUP" ]; then
-    	BACKUP=$PS1
-    fi
-    TITLE="\[\e]2;$*\a\]"
-    PS1=${BACKUP}${TITLE}
+    echo -en "\033]0;$*\a"
 }
 
 find_bin_dirs() {
