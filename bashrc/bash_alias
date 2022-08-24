@@ -50,14 +50,17 @@ alias df='df -h'
 alias du='du -ch'
 alias apug='tree -apug'
 alias igrep='grep -i'
+alias eigrep='grep -Ei'
 alias hgrep='history | grep'
+alias higrep='history | grep -i'
+alias heigrep='history | grep -Ei'
 alias h='history'
 alias j='jobs -l'
 alias mount='mount | column -t'
 alias vi=vim
 alias ping='ping -c 5'
 alias fastping='ping -c 10 -i .2'
-alias less='less -r'
+alias =' -r'
 alias gph='git-prompt-help'
 
 # colorization
