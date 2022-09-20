@@ -36,6 +36,7 @@ alias show='apt-cache show'
 alias policy='apt-cache policy'
 
 # misc
+alias xclip="xclip -sel clip"
 alias top='htop'
 alias glances='glances --theme-white'
 alias bat='batcat'
