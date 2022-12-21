@@ -64,6 +64,7 @@ alias ping='ping -c 5'
 alias fastping='ping -c 10 -i .2'
 alias less='less -r'
 alias gph='git-prompt-help'
+alias wifi-scan="nmcli -f in-use,ssid,bssid,signal,bars dev wifi"
 
 # colorization
 alias ls='ls --color=auto'
