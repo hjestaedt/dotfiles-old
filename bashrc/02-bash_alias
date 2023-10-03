@@ -69,6 +69,7 @@ if command -v docker >/dev/null 2>&1; then
     alias dn='docker network'
     alias ds='docker system'
     alias dv='docker volume'
+    alias dr='docker run'
     # useful
     alias dspa='docker system prune -a'
     alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
