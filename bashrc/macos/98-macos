@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+BASH_SILENCE_DEPRECATION_WARNING=1
+export BASH_SILENCE_DEPRECATION_WARNING
+
+# ls wrapper that hides system directories
+alias ls='$HOME/bin/ls.sh -F --color=auto --group-directories-first'
+
+# macos specific aliases
+alias ntl='netstat -na -p TCP | grep -i "listen"'
+alias ntlp='netstat -na -p TCP | grep -i "listen" | grep'

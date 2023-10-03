@@ -1,8 +1,0 @@
-#!/bin/bash
-
-BOLD="\[\033[1;39m\]"
-RED="\[\033[0;31m\]"
-RST='\[\033[0m\]'
-  
-PS1="${BOLD}\u@\h${RST} [${RED}\w${RST}] \\$ \[$(tput sgr0)\]"; export PS1
-PROMPT_COMMAND="tabname"

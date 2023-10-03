@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+tabname() {
+    echo -en "\033]0;$*\a"
+}
+
+find_bin_dirs() {
+    find "$1" -maxdepth 2 -follow -not -path '*/\.*' -type d -name bin -printf "%p:"
+}
+
+killemall() {
+    if [ -z "$1" ]; then
+        echo "pattern argument required" 1>&2
+        return 1
+    fi
+    kill -9 $(pgrep -fi "$1")
+}
+
+watch() {
+    if [ -z "$1" ]; then
+        echo "command argument required" 1>&2
+        return 1
+    fi
+    while true; do
+        clear
+        $1
+        sleep 1
+    done
+}
+
+m() {
+    python3 -c "from math import *; print($*)"
+}
+
+highlight() {
+    # cat <file> | highlight foo
+    # cat <file> | highlight "foo\|bar"
+    # cat <file> | highlight "foo\|bar" | less -r
+    COLOR=31
+    PATTERN="$1"
+    ESCAPE=$(printf '\033')
+    sed "s,${PATTERN},${ESCAPE}[${COLOR}m&${ESCAPE}[0m,g"
+}
+
+# kubectl
+if command -v kubectl >/dev/null 2>&1; then
+    kubens() {
+        if [ -z "$1" ]; then
+            echo "namespace argument required" 1>&2
+            return 1
+        fi
+        kubectl config set-context --current --namespace="$1"
+    }
+
+fi

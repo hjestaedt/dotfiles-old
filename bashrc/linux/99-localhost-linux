@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# starship
+eval "$(starship init bash)"
+
+# bat as manpager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# fzf
+# shellcheck disable=SC1090
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# thefuck
+eval "$(thefuck --alias)"

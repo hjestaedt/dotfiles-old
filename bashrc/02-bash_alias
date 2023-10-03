@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias pd+='pushd'
+alias pd-='popd'
+
+# ls
+alias ls='ls --color'
+alias l='ls'
+alias ll='ls -l'
+alias la='ls -la'
+alias lt='ls -ltra'
+alias l.='ls -d .*'
+
+# safety
+alias rm='rm -I --preserve-root'
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+alias chown='chown --preserve-root'
+alias chgrp='chgrp --preserve-root'
+alias chmod='chmod --preserve-root'
+
+# misc
+alias top='htop'
+alias path='echo -e ${PATH//:/\\n}'
+alias nowdate='date +"%d-%m-%Y"'
+alias nowtime='date +"%T"'
+alias now='date +"%d-%m-%Y %T"'
+
+alias sui='sudo -i'
+alias sul='sudo su -l'
+alias zv='nc -zv'
+alias viro='vi -R'
+alias cls='clear'
+alias df='df -h'
+alias du='du -ch'
+alias apug='tree -apug'
+alias igrep='grep -i'
+alias hgrep='history | grep'
+alias h='history'
+alias j='jobs -l'
+alias lsmnt='mount | column -t'
+alias ping='ping -c 5'
+alias less='less -r'
+alias ntl='netstat -ntl'
+alias ntlp='netstat -ntlp'
+alias egrep='grep --color -E'
+alias fgrep='grep --color -F'
+
+# colorization
+alias grep='grep --color=auto'
+alias bzgrep='bzgrep --color=auto'
+alias zgrep='zgrep --color=auto'
+alias diff='diff --color'
+
+# docker
+if command -v docker >/dev/null 2>&1; then
+    # basic
+    alias dco='docker container'
+    alias dcx='docker context'
+    alias de='docker exec'
+    alias dim='docker image'
+    alias din='docker inspect'
+    alias dl='docker logs'
+    alias dn='docker network'
+    alias ds='docker system'
+    alias dv='docker volume'
+    # useful
+    alias dspa='docker system prune -a'
+    alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}"'
+    alias dpsl='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"'
+fi
+
+# docker-compose
+if command -v docker-compose >/dev/null 2>&1; then
+    alias doco='docker compose'
+fi
+
+# kubectl
+if command -v kubectl >/dev/null 2>&1; then
+    # basic
+    alias k='kubectl'
+    alias ka='kubectl apply'
+    alias kcr='kubectl create'
+    alias kcf='kubectl config'
+    alias kde='kubectl describe'
+    alias kdx='kubectl delete'
+    alias kg='kubectl get'
+    alias kl='kubectl logs -f'
+    # useful
+    alias kga='kubectl get all'
+    alias kda='kubectl delete all --all'
+fi
+
+# gcloud
+if command -v gcloud >/dev/null 2>&1; then
+    # basic
+    alias gc="gcloud"
+    # useful
+    alias gccfga='gcloud config configurations activate'
+    alias gckcred='gcloud container clusters get-credentials'
+fi
