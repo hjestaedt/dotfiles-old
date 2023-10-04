@@ -50,6 +50,7 @@ alias ntl='netstat -ntl'
 alias ntlp='netstat -ntlp'
 alias egrep='grep --color -E'
 alias fgrep='grep --color -F'
+alias fa='alias | grep -i'
 
 # colorization
 alias grep='grep --color=auto'
