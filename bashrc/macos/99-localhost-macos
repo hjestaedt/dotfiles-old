@@ -3,6 +3,9 @@
 # starship
 eval "$(starship init bash)"
 
+# colima
+export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+
 # bat as manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 

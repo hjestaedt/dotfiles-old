@@ -6,7 +6,7 @@ export JAVA_HOME
 
 # path
 PATH="$JAVA_HOME/bin:$PATH"
-PATH="$HOME/opt/build/apache-maven/bin:$PATH"
+PATH="$HOME/opt/build/maven/bin:$PATH"
 PATH="$HOME/opt/build/gradle/bin:$PATH"
 PATH="$HOME/opt/build/bazel/bin:$PATH"
 export PATH
