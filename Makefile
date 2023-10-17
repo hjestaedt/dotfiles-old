@@ -1,7 +1,17 @@
 bashrc-install:
-	@echo "Installing bashrc..."
+	@echo "installing bashrc"
 	cd bashrc && ./install.sh
 
 bashrc-uninstall:
-	@echo "Uninstalling bashrc..."
+	@echo "ininstalling bashrc"
 	cd bashrc && ./uninstall.sh
+
+gitconfig-install:
+	@echo "installing gitconfig"
+	cp gitconfig ~/.gitconfig
+	cp gitignore ~/.gitignore
+
+gitconfig-uninstall:
+	@echo "installing gitconfig"
+	rm ~/.gitconfig
+	rm ~/.gitignore

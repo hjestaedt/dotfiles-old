@@ -1,11 +1,12 @@
 [user]
 	name = Holger Jestaedt
-	email = git@hjestaedt.dev
-	username = hjestaedt
+	email = holger.jestaedt@flyrlabs.com
+	username = hjestaedt-flyr
 [init]
-        defaultBranch = main
+    defaultBranch = main
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore
 [diff]
 	tool = vimdiff
 [merge]
