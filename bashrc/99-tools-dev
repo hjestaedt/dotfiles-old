@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
 # variables
-JAVA_HOME="$HOME/opt/jdk/jdk-17"
+JAVA_HOME="$HOME/opt/sdk/jdk-17"
 export JAVA_HOME
 
 # path
 PATH="$JAVA_HOME/bin:$PATH"
-PATH="$HOME/opt/build/maven/bin:$PATH"
-PATH="$HOME/opt/build/gradle/bin:$PATH"
-PATH="$HOME/opt/build/bazel/bin:$PATH"
+PATH="$HOME/opt/cli/build/maven/bin:$PATH"
+PATH="$HOME/opt/cli/build/gradle/bin:$PATH"
 export PATH
