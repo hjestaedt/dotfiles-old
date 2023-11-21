@@ -22,3 +22,6 @@ difftool() {
     # shellcheck disable=SC2068
     /Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea diff $@ &>/dev/null
 }
+
+# kubectl port-forward
+alias kpf="ps -ef | grep kubectl | grep port-forward | awk '{print \$(NF-1), \$NF}'"
