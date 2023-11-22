@@ -84,18 +84,38 @@ fi
 
 # kubectl
 if command -v kubectl >/dev/null 2>&1; then
-    # basic
     alias k='kubectl'
     alias ka='kubectl apply'
     alias kcr='kubectl create'
     alias kcf='kubectl config'
-    alias kde='kubectl describe'
     alias kdx='kubectl delete'
+    alias kde='kubectl describe'
     alias kg='kubectl get'
     alias kl='kubectl logs -f'
-    # useful
     alias kga='kubectl get all'
-    alias kda='kubectl delete all --all'
+    alias kdxa='kubectl delete all --all'
+    alias kgp='kubectl get pods'
+    alias kgpw='watch -n 1 kubectl get pods'
+    alias kdxp='kubectl delete pods'
+    alias kdxpa='kubectl delete pods --all'
+    alias kgs='kubectl get services'
+    alias kdxs='kubectl delete services'
+    alias kdxsa='kubectl delete services --all'
+    alias kgd='kubectl get deployments'
+    alias kdxd='kubectl delete deployments'
+    alias kdxda='kubectl delete deployments --all'
+    alias kcns='kubectl create namespace'
+    alias kdxns='kubectl delete namespace'
+    # get default namespace
+    alias kgdns="kubectl config view --minify --output 'jsonpath={..namespace}'"
+    # set default namespace
+    alias ksdns='kubectl config set-context --current --namespace'
+    # delete default namespace (sets to "default")
+    alias kdxdns='kubectl config set-context --current --namespace default'
+    # get port-forwards
+    alias kgpf="ps -ef | grep 'kubectl' | grep 'port-forward' | awk '{print \$(NF-1), \$NF}'"
+    # delete port-forwards
+    alias kdxpf='pgrep -fi "kubectl.*port-forward" | xargs kill -9'
 fi
 
 # gcloud
