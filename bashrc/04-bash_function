@@ -16,30 +16,13 @@ killemall() {
     kill -9 $(pgrep -fi "$1")
 }
 
-m() {
-    python3 -c "from math import *; print($*)"
-}
-
-watch() {
-    if [ -z "$1" ]; then
-        echo "command argument required" 1>&2
-        return 1
-    fi
-    while true; do
-        clear
-        $1
-        sleep 1
-    done
-}
-
-
 highlight() {
     # cat <file> | highlight foo
     # cat <file> | highlight "foo\|bar"
     # cat <file> | highlight "foo\|bar" | less -r
     COLOR=31
     PATTERN="$1"
-    ESCAPE=$(printf '\033')
+    ESCAPE=$(printf "\033')
     sed "s,${PATTERN},${ESCAPE}[${COLOR}m&${ESCAPE}[0m,g"
 }
 
