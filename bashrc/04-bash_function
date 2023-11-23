@@ -22,7 +22,7 @@ highlight() {
     # cat <file> | highlight "foo\|bar" | less -r
     COLOR=31
     PATTERN="$1"
-    ESCAPE=$(printf "\033')
+    ESCAPE=$(printf '\033')
     sed "s,${PATTERN},${ESCAPE}[${COLOR}m&${ESCAPE}[0m,g"
 }
 
@@ -41,7 +41,7 @@ if command -v kubectl >/dev/null 2>&1; then
             echo "pod name pattern argument required" 1>&2;
             return 1
         fi
-        kubectl logs -f $(kubectl get pods | grep -i running | grep "$1" | awk '{print $1}')
+        kubectl logs -f "$(kubectl get pods | grep -i running | grep "$1" | awk '{print $1}')"
     }
 
     # description:
@@ -56,7 +56,7 @@ if command -v kubectl >/dev/null 2>&1; then
             echo "pod name pattern argument required" 1>&2
             return 1
         fi
-        kubectl logs -f $(kubectl get pods | grep -i running | grep "$1" | awk '{print $1}') | grep '^{.*}$' | jq -r '.'
+        kubectl logs -f "$(kubectl get pods | grep -i running | grep "$1" | awk '{print $1}')" | grep '^{.*}$' | jq -r '.'
     }
 
     # delete all pods (optional: that match the pattern) with status different than running
@@ -93,7 +93,7 @@ if command -v kubectl >/dev/null 2>&1; then
             echo "port-mapping argument required" 1>&2
             return 1
         fi
-        while true; do kubectl port-forward svc/$(kubectl get service | grep "$1" | awk '{print $1}') "$2"; done
+        while true; do kubectl port-forward svc/"$(kubectl get service | grep "$1" | awk '{print $1}')" "$2"; done
     }
 
 fi
