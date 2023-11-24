@@ -50,7 +50,9 @@ alias ntl='netstat -ntl'
 alias ntlp='netstat -ntlp'
 alias egrep='grep --color -E'
 alias fgrep='grep --color -F'
-alias fa='alias | grep -i'
+alias fal='alias | grep -i'
+# print all user defined functions
+alias lsfn="declare -F | awk '{print \$NF}' | sort | egrep -v '^_'"
 
 # colorization
 alias grep='grep --color=auto'
