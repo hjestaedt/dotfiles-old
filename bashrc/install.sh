@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-_PATH=$(readlink -f "$0"); readonly _PATH;
-_DIR=$(dirname "$_PATH"); readonly _DIR;
-readonly _ENV_FILE="$_DIR/.env";
-readonly _FILE_DIR="$_DIR/files";
-readonly _BASHRC_INIT_FILENAME="init.bashrc"
+_PATH=$(readlink -f "$0"); declare -r _PATH;
+_DIR=$(dirname "$_PATH"); declare -r _DIR;
+declare -r _ENV_FILE="$_DIR/.env";
+declare -r _FILE_DIR="$_DIR/files";
+declare -r _BASHRC_INIT_FILENAME="init.bashrc"
 
 usage() {
     echo "usage: $0 -p <profile> [-o <os>] [-f]"
@@ -53,7 +53,7 @@ while getopts "o:p:f" opt; do
         *) usage
     esac
 done
-readonly OS PROFILE OVERWRITE
+declare -r OS PROFILE OVERWRITE
 
 # check mandatory arguments
 [ -n "$OS" ] || exit_error "os not specified"

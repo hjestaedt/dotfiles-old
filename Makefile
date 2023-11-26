@@ -31,3 +31,11 @@ starship-install:
 starship-uninstall:
 	@echo "uninstalling starship"
 	rm ~/.config/starship.toml
+
+ls-install:
+	@echo "installing ls"
+	cp script/ls.sh ~/bin/ls.sh
+
+ls-uninstall:
+	@echo "uninstalling ls"
+	rm ~/bin/ls.sh
