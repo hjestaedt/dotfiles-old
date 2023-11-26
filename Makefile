@@ -1,17 +1,25 @@
 bashrc-install:
 	@echo "installing bashrc"
-	cd bashrc && ./install.sh
+	bashrc/install.sh
 
 bashrc-uninstall:
-	@echo "ininstalling bashrc"
-	cd bashrc && ./uninstall.sh
+	@echo "unininstalling bashrc"
+	bashrc/uninstall.sh
 
 gitconfig-install:
 	@echo "installing gitconfig"
-	cp gitconfig ~/.gitconfig
-	cp gitignore ~/.gitignore
+	cp git/gitconfig ~/.gitconfig
+	cp git/gitignore ~/.gitignore
 
 gitconfig-uninstall:
-	@echo "installing gitconfig"
+	@echo "uninstalling gitconfig"
 	rm ~/.gitconfig
 	rm ~/.gitignore
+
+vimrc-install:
+	@echo "installing vimrc"
+	cp vim/vimrc ~/.vimrc
+
+vimrc-uninstall:
+	@echo "uninstalling vimrc"
+	rm ~/.vimrc

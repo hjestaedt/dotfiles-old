@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# shellcheck disable=SC2046
-
-# homebrew environment
-eval $(/opt/homebrew/bin/brew shellenv)
-
-# homebrew gnu utils
-for d in "$HOMEBREW_PREFIX"/opt/*/libexec/gnubin; do export PATH=$d:$PATH; done
-for d in "$HOMEBREW_PREFIX"/opt/*/libexec/gnuman; do export MANPATH=$d:$MANPATH; done

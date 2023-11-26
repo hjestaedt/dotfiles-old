@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-EDITOR=$(command -v vim)
-HISTCONTROL=ignoreboth:erasedups
-
-export EDITOR HISTCONTROL
