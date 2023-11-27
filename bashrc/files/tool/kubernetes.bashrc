@@ -1,8 +1,13 @@
 #!/bin/bash
 
 # kubectl
+# - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
 
 if command -v kubectl >/dev/null 2>&1; then
+
+    # bash completion
+    source <(kubectl completion bash)
+
     # kubectl aliases
 
     alias k='kubectl'
@@ -17,26 +22,35 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kpf='kubectl port-forward'
     alias kcfg='kubectl config'
 
+    alias kge='kubectl get events --sort-by=.metadata.creationTimestamp'
+    alias kgew='kubectl get events --sort-by=.metadata.creationTimestamp --watch'
+
     alias kga='kubectl get all'
     alias kdxa='kubectl delete all --all'
 
     alias kgp='kubectl get pod'
+    alias kdep='kubectl describe pod'
     alias kdxp='kubectl delete pod'
     alias wkgp='watch -n 1 kubectl get pod'
 
     alias kgd='kubectl get deployment'
+    alias kded='kubectl describe deployment'
     alias kdxd='kubectl delete deployment'
 
     alias kgsvc='kubectl get service'
+    alias kdesvc='kubectl describe service'
     alias kdxsvc='kubectl delete service'
 
     alias kgsec='kubectl get secret'
+    alias kdesec='kubectl describe secret'
     alias kdxsec='kubectl delete secret'
 
     alias kgcm='kubectl get configmap'
+    alias kdecm='kubectl describe configmap'
     alias kdxcm='kubectl delete configmap'
 
     alias kcns='kubectl create namespace'
+    alias kdens='kubectl describe namespace'
     alias kdxns='kubectl delete namespace'
 
     alias kgctx='kubectl config current-context'
