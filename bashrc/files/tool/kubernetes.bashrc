@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # kubectl
 # - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
@@ -6,6 +6,7 @@
 if command -v kubectl >/dev/null 2>&1; then
 
     # bash completion
+    # shellcheck disable=SC1090
     source <(kubectl completion bash)
 
     # kubectl aliases
@@ -49,6 +50,7 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kdecm='kubectl describe configmap'
     alias kdxcm='kubectl delete configmap'
 
+    alias kgns='kubectl get namespace'
     alias kcns='kubectl create namespace'
     alias kdens='kubectl describe namespace'
     alias kdxns='kubectl delete namespace'
@@ -163,5 +165,4 @@ if command -v kubectl >/dev/null 2>&1; then
             echo
         done
     }
-
 fi

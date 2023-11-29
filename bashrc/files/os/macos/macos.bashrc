@@ -4,7 +4,7 @@ BASH_SILENCE_DEPRECATION_WARNING=1
 export BASH_SILENCE_DEPRECATION_WARNING
 
 # ls wrapper that hides system directories
-file_exists $HOME/bin/ls.sh && alias ls='$HOME/bin/ls.sh -F --color=auto --group-directories-first'
+file_exists "$HOME"/bin/ls.sh && alias ls='$HOME/bin/ls.sh -F --color=auto --group-directories-first'
 
 if file_exists /opt/homebrew/bin/brew; then
     # homebrew environment
