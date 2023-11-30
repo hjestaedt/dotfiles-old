@@ -10,7 +10,7 @@ JAVA_HOME="$HOME/opt/sdk/jdk-17"
 DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
 TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock
 JQ_COLORS="0;90:0;39:0;39:0;39:0;32:1;39:1;39:1;34"
-export DOCKER_HOST TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE JAVA_HOME JQ_COLORS CE_DEV_NAMESPACE
+export DOCKER_HOST TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE JAVA_HOME JQ_COLORS SHELL_CONFIG
 
 # path
 PATH="$JAVA_HOME/bin:$PATH"
@@ -32,6 +32,6 @@ ce_chns() {
         echo "namespace argument required" 1>&2
         return 1
     fi
-    ce_chns.sh -n "$1" -f "$BASHRC_HOME"/profile/work/localhost.bashrc
+    $HOME/bin/ce_chns.sh -n "$1" -f "$BASHRC_HOME"/profile/work/localhost.bashrc
     init.bashrc
 }
