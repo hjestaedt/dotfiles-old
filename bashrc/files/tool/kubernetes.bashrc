@@ -55,6 +55,10 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kdens='kubectl describe namespace'
     alias kdxns='kubectl delete namespace'
 
+    alias kgn='kubectl get node'
+    alias kden='kubectl describe node'
+    alias kdxn='kubectl delete node'
+
     alias kgctx='kubectl config current-context'
     alias kgctxs='kubectl config get-contexts'
     alias ksctx='kubectl config use-context'
@@ -62,6 +66,8 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kgdns="kubectl config view --minify --output 'jsonpath={..namespace}'"
     alias ksdns='kubectl config set-context --current --namespace'
     alias kdxdns='kubectl config set-context --current --namespace default'
+
+    alias krrd="kubectl rollout restart deployment"
 
     alias kgpf="ps -ef | grep 'kubectl' | grep 'port-forward' | awk '{print \$(NF-1), \$NF}'"
     alias kdxpfa='pgrep -fi "kubectl.*port-forward" | xargs kill -9'
