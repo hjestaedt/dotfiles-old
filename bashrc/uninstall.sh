@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 exit_error() {
     [ -n "$1" ] && echo "error: $1" >&2

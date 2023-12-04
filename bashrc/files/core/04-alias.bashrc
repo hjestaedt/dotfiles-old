@@ -29,8 +29,8 @@ alias chmod='chmod --preserve-root'
 # grep
 alias grep='grep --color=auto'
 alias igrep='grep -i'
-alias egrep='grep -E'
-alias fgrep='grep -F'
+alias egrep='grep -E'           # extended regex
+alias fgrep='grep -F'           # fixed string
 
 # override default commands
 alias top='htop'

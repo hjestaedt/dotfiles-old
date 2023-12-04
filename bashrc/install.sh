@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 _PATH=$(readlink -f "$0"); declare -r _PATH;
 _DIR=$(dirname "$_PATH"); declare -r _DIR;
 declare -r _ENV_FILE="$_DIR/.env";
+declare -r _USER_ENV_FILE="$_DIR/.user_env";
 declare -r _FILE_DIR="$_DIR/files";
 declare -r _BASHRC_INIT_FILENAME="init.bashrc"
 
@@ -29,9 +31,16 @@ valid_profile() {
 }
 
 # read environment variables
-[ -f "$_ENV_FILE" ] || exit_error "$_ENV_FILE not found"
+[ -r "$_ENV_FILE" ] || exit_error "$_ENV_FILE not found or not readable"
 # shellcheck disable=SC1090
 . "$_ENV_FILE"
+
+# read user environment variables
+# shellcheck disable=SC1090
+[ -r "$_USER_ENV_FILE" ] && . "$_USER_ENV_FILE"
+
+echo "PROFILE: $PROFILE"
+exit
 
 # detect operating system
 os_name=$(uname -s)
@@ -115,6 +124,6 @@ if  ! grep -Fq "$BASHRC_HOME_UNEXPANDED" "$BASHRC_FILE"; then
     cat >> "$BASHRC_FILE" <<EOF
 # shellcheck disable=SC1091
 export BASHRC_HOME="$BASHRC_HOME_UNEXPANDED"
-if [ -d "\$BASHRC_HOME" ]; then . "\$BASHRC_HOME"/init.bashrc; fi
+if [ -d "\$BASHRC_HOME" ] && [ -r "\$BASHRC_HOME"/init.bashrc ]; then . "\$BASHRC_HOME"/init.bashrc; fi
 EOF
 fi
