@@ -37,3 +37,27 @@ highlight() {
     local color=31
     sed "s,${1},${escape}[${color}m&${escape}[0m,g"
 }
+
+# description:
+#   encode string to base64
+# arguments:
+#   string - string to encode
+# usage:
+#   b64enc <string>
+#   b64enc foo
+b64enc() {
+    variable_set "$1" || exit_error "string argument required"
+    echo -n "$1" | base64
+}
+
+# description:
+#   decode base64 string
+# arguments:
+#   string - string to decode
+# usage:
+#   b64dec <string>
+#   b64dec Zm9v
+b64dec() {
+    variable_set "$1" || exit_error "string argument required"
+    echo -n "$1" | base64 -d
+}

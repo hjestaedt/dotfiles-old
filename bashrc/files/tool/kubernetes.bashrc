@@ -13,11 +13,16 @@ if command -v kubectl >/dev/null 2>&1; then
 
     alias k='kubectl'
     alias ka='kubectl apply'
+    alias kaf='kubectl apply -f'
+    alias kak='kubectl apply -k'
+    alias kk='kubectl kustomize'
     alias kc='kubectl create'
     alias kg='kubectl get'
     alias kl='kubectl logs'
     alias klf='kubectl logs -f'
     alias kdx='kubectl delete'
+    alias kdxf='kubectl delete -f'
+    alias kdxk='kubectl delete -k'
     alias kde='kubectl describe'
     alias kex='kubectl exec'
     alias kpf='kubectl port-forward'
@@ -27,6 +32,7 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kgew='kubectl get events --sort-by=.metadata.creationTimestamp --watch'
 
     alias kga='kubectl get all'
+    alias kgar='kubectl get all,cm,secret,ing'
     alias kdxa='kubectl delete all --all'
 
     alias kgp='kubectl get pod'

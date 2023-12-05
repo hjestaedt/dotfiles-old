@@ -39,9 +39,6 @@ valid_profile() {
 # shellcheck disable=SC1090
 [ -r "$_USER_ENV_FILE" ] && . "$_USER_ENV_FILE"
 
-echo "PROFILE: $PROFILE"
-exit
-
 # detect operating system
 os_name=$(uname -s)
 if [ "$os_name" = "Linux" ]; then
