@@ -33,5 +33,9 @@ ce_chns() {
         return 1
     fi
     $HOME/bin/ce_chns.sh -n "$1" -f "$BASHRC_HOME"/profile/work/localhost.bashrc
-    init.bashrc
+    . $BASHRC_HOME/init.bashrc
+
+    echo
+    echo "current namespace: $(kubectl config view --minify --output 'jsonpath={..namespace}')"
+    echo "current ce namespace: $(env | grep CE_DEV_NAMESPACE)"
 }
