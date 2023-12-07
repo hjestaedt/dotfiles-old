@@ -22,7 +22,7 @@ export PATH
 # functions
 difftool() {
     # shellcheck disable=SC2068
-    /Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea diff $@ &>/dev/null
+    $HOME/Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea diff $@ &>/dev/null
 }
 
 # ce namespace

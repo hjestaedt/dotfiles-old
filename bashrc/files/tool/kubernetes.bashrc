@@ -48,9 +48,17 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kdesvc='kubectl describe service'
     alias kdxsvc='kubectl delete service'
 
+    alias kging='kubectl get ingress'
+    alias kdeing='kubectl describe ingress'
+    alias kdxing='kubectl delete ingress'
+
     alias kgsec='kubectl get secret'
     alias kdesec='kubectl describe secret'
     alias kdxsec='kubectl delete secret'
+
+    alias kgexsec='kubectl get externalsecret'
+    alias kdexsec='kubectl describe externalsecret'
+    alias kdxexsec='kubectl delete externalsecret'
 
     alias kgcm='kubectl get configmap'
     alias kdecm='kubectl describe configmap'
@@ -92,7 +100,9 @@ if command -v kubectl >/dev/null 2>&1; then
             echo "pod name pattern argument required" 1>&2;
             return 1
         fi
-        kubectl logs -f "$(kubectl get pods | tail -n +2 | grep -i running | awk '{print $1}' | grep "$1")"
+        local pattern="$1"
+        shift
+        kubectl logs -f "$(kubectl get pods | tail -n +2 | grep -i running | awk '{print $pattern}' | grep "$pattern")" "$@"
     }
 
     # description:
@@ -107,7 +117,9 @@ if command -v kubectl >/dev/null 2>&1; then
             echo "pod name pattern argument required" 1>&2
             return 1
         fi
-        kubectl logs -f "$(kubectl get pods | tail -n +2 | grep -i running | awk '{print $1}' | grep "$1")" | grep '^{.*}$' | jq -r '.'
+        pattern="$1"
+        shift
+        kubectl logs -f "$(kubectl get pods | tail -n +2 | grep -i running | awk '{print $pattern}' | grep "$pattern")" "$@" | grep '^{.*}$' | jq -r '.'
     }
 
     # delete all pods (optional: that match the pattern) with status different than running
