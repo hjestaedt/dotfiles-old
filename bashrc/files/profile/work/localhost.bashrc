@@ -24,18 +24,3 @@ difftool() {
     # shellcheck disable=SC2068
     $HOME/Applications/IntelliJ\ IDEA.app/Contents/MacOS/idea diff $@ &>/dev/null
 }
-
-# ce namespace
-export CE_DEV_NAMESPACE="airlift-local-dev"
-ce_chns() {
-    if [ -z "$1" ]; then
-        echo "namespace argument required" 1>&2
-        return 1
-    fi
-    $HOME/bin/ce_chns.sh -n "$1" -f "$BASHRC_HOME"/profile/work/localhost.bashrc
-    . $BASHRC_HOME/init.bashrc
-
-    echo
-    echo "current namespace: $(kubectl config view --minify --output 'jsonpath={..namespace}')"
-    echo "current ce namespace: $(env | grep CE_DEV_NAMESPACE)"
-}
