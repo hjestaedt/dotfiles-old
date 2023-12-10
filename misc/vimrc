@@ -14,3 +14,9 @@ set rulerformat=%l,%v
 
 " tabs for makefiles
 autocmd FileType make setlocal tabstop=4 shiftwidth=4 softtabstop=0 noexpandtab
+
+" tabs for shellscripts
+autocmd FileType make setlocal tabstop=4 shiftwidth=4 softtabstop=0 noexpandtab
+
+" textwidth for gitcommit
+au FileType gitcommit setlocal tw=72
