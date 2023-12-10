@@ -6,17 +6,21 @@
 if command -v skaffold >/dev/null 2>&1; then
 
     # aliases
-    alias sb="skaffold build"
-    alias sbp="skaffold build --profile"
+    alias skb="skaffold build"
+    alias skbp="skaffold build --profile"
 
-    alias sre="skaffold render"
-    alias srep="skaffold render --profile"
+    alias skren="skaffold render"
+    alias skrenp="skaffold render --profile"
 
-    alias srn="skaffold run"
-    alias srnp="skaffold run --profile"
-    alias srnpp="skaffold run --port-forward --profile"
+    alias skrun="skaffold run"
+    alias skrunp="skaffold run --profile"
+    alias skrunpp="skaffold run --port-forward --profile"
 
-    alias sd="skaffold dev"
-    alias sdp="skaffold dev --profile"
-    alias sdpp="skaffold dev --port-forward --profile"
+    alias skdel="skaffold delete"
+    alias skdelp="skaffold delete --profile"
+
+    alias skdev="skaffold dev"
+    alias skdevp="skaffold dev --profile"
+    alias skdevpp="skaffold dev --port-forward --profile"
+
 fi
