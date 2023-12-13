@@ -74,7 +74,7 @@ echo "installing bashrc for $OS $PROFILE"
 # create $BASHRC_FILE if not exists
 if [ ! -f "$BASHRC_FILE" ]; then
     echo "creating $BASHRC_FILE"
-    echo "#!/bin/bash" > "$BASHRC_FILE"
+    echo "#!/usr/bin/env bash" > "$BASHRC_FILE"
     echo >> "$BASHRC_FILE"
 fi
 

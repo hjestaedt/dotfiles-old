@@ -25,6 +25,7 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kdlk='kubectl delete -k'
     alias kds='kubectl describe'
     alias kex='kubectl exec'
+    alias kexit='kubectl exec -it'
     alias kpf='kubectl port-forward'
     alias kcfg='kubectl config'
 
@@ -38,11 +39,16 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kgp='kubectl get pod'
     alias kdsp='kubectl describe pod'
     alias kdlp='kubectl delete pod'
+    alias ktpp='kubectl top pod'
     alias wkgp='watch -n 1 kubectl get pod'
 
     alias kgd='kubectl get deployment'
     alias kdsd='kubectl describe deployment'
     alias kdld='kubectl delete deployment'
+
+    alias kgsts='kubectl get statefulset'
+    alias kdssts='kubectl describe statefulset'
+    alias kdlsts='kubectl delete statefulset'
 
     alias kgsvc='kubectl get service'
     alias kdssvc='kubectl describe service'
@@ -64,6 +70,10 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kdscm='kubectl describe configmap'
     alias kdlcm='kubectl delete configmap'
 
+    alias kgpvc='kubectl get pvc'
+    alias kdspvc='kubectl describe pvc'
+    alias kdlpvc='kubectl delete pvc'
+
     alias kgns='kubectl get namespace'
     alias kcns='kubectl create namespace'
     alias kdsns='kubectl describe namespace'
@@ -72,6 +82,7 @@ if command -v kubectl >/dev/null 2>&1; then
     alias kgn='kubectl get node'
     alias kdsn='kubectl describe node'
     alias kdln='kubectl delete node'
+    alias ktpn='kubectl top node'
 
     alias kgctx='kubectl config current-context'
     alias kgctxs='kubectl config get-contexts'
@@ -120,6 +131,21 @@ if command -v kubectl >/dev/null 2>&1; then
         pattern="$1"
         shift
         kubectl logs -f "$(kubectl get pods | tail -n +2 | grep -i running | awk '{print $pattern}' | grep "$pattern")" "$@" | grep '^{.*}$' | jq -r '.'
+    }
+
+    # description:
+    #   login to the running pod that matches the pattern
+    # arguments:
+    #   pattern - pod name pattern
+    # usage:
+    #   kctl_login <pattern>
+    #   e.g.: kctl_login foo
+    kctl_login() {
+        if [ -z "$1" ]; then
+            echo "pod name pattern argument required" 1>&2;
+            return 1
+        fi
+        kubectl exec -it "$(kubectl get pods | tail -n +2 | grep -i running | awk '{print $1}' | grep "$1")" -- /bin/bash
     }
 
     # delete all pods (optional: that match the pattern) with status different than running

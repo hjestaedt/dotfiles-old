@@ -15,8 +15,6 @@ export DOCKER_HOST TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE JAVA_HOME JQ_COLORS SHE
 # path
 PATH="$JAVA_HOME/bin:$PATH"
 PATH="$HOME/opt/cli/build/maven/bin:$PATH"
-PATH="$HOME/opt/cli/build/gradle/bin:$PATH"
-PATH="$HOME/opt/skd/jdk-17/bin:$PATH"
 export PATH
 
 # functions

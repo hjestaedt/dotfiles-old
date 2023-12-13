@@ -29,6 +29,8 @@ if command -v git >/dev/null 2>&1; then
     alias gf='git fetch'
     alias gfp='git fetch --prune'
     alias gl='git log'
+    alias glo='git log --oneline --decorate -n 10'
+    alias gloa='git log --oneline --decorate --all'
     alias glg='git log --graph --oneline --decorate --all'
     alias gls='git log --stat'
     alias gp='git push'
@@ -46,6 +48,12 @@ if command -v git >/dev/null 2>&1; then
     alias gs='git status'
     alias gsw='git switch'
     alias gsw-='git switch -'
+    alias gst='git stash'
+    alias gstp='git stash pop'
+    alias gsta='git stash apply'
+    alias gstl='git stash list'
+    alias gstc='git stash clear'
+    alias gstd='git stash drop'
     alias gswrb='git switch main && git pull && git switch - && git rebase main'
 
     # git functions
