@@ -18,6 +18,8 @@ if command -v git >/dev/null 2>&1; then
     alias gc='git commit'
     alias gca='git commit --amend'
     alias gcm='git commit -m'
+    alias gco='git checkout'
+    alias gcob='git checkout -b'
     alias grs='git restore'
     alias grs.='git restore .'
     alias grss='git restore --staged'
