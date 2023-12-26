@@ -40,6 +40,7 @@ alias du='du -ch'
 alias diff='diff --color'
 
 # custom commands
+alias vi='vim'
 alias cl='clear'
 alias h='history'
 alias path='echo -e ${PATH//:/\\n}'

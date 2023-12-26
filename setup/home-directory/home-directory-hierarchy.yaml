@@ -1,0 +1,110 @@
+- path: bin
+  permissions: 700
+
+- path: doc
+  permissions: 700
+
+- path: doc/book
+  permissions: 700
+
+- path: doc/book/audio
+  permissions: 700
+
+- path: doc/book/devops
+  permissions: 700
+
+- path: doc/book/misc
+  permissions: 700
+
+- path: doc/magazine
+  permissions: 700
+
+- path: doc/misc
+  permissions: 700
+
+- path: doc/misc/studies
+  permissions: 700
+
+- path: doc/obsidian
+  permissions: 700
+
+- path: media
+  permissions: 700
+
+- path: media/image
+  permissions: 700
+
+- path: media/music
+  permissions: 700
+
+- path: media/video
+  permissions: 700
+
+- path: opt
+  permissions: 700
+
+- path: opt/devops/cli
+  permissions: 700
+
+- path: opt/devops/cli/build
+  permissions: 700
+
+- path: opt/devops/docker
+  permissions: 700
+
+- path: opt/devops/runtime
+  permissions: 700
+
+- path: opt/devops/sdk
+  permissions: 700
+
+- path: src
+  permissions: 700
+
+- path: src/test
+  permissions: 700
+
+- path: tmp
+  permissions: 700
+
+- path: var
+  permissions: 700
+
+- path: var/archive
+  permissions: 700
+
+- path: var/backup
+  permissions: 700
+
+- path: var/download
+  permissions: 700
+
+- path: var/share
+  permissions: 700
+
+- path: var/vm
+  permissions: 700
+
+- path: .ssh
+  permissions: 700
+
+- path: .ssh/config.d
+  permissions: 700
+
+- path: .ssh/config.d/.git
+  permissions: 700
+
+- path: .ssh/config.d/.local
+  permissions: 700
+
+- path: .ssh/config.d/.cloud
+  permissions: 700
+
+- path: .vault
+  permissions: 700
+
+- path: .vault/keepasscx
+  permissions: 700
+
+- path: .bashrc.d
+  permissions: 700
