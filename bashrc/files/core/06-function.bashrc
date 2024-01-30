@@ -31,7 +31,7 @@ set_tabname() {
 #   cat <file> | highlight "foo\|bar"
 #   cat <file> | highlight "foo\|bar" | less -r
 highlight() {
-    variable_set "$1" || exit_error "pattern argument required"
+    variable_set "$1" || return_error "pattern argument required"
     local escape
     escape=$(printf '\033')
     local color=31
@@ -46,7 +46,7 @@ highlight() {
 #   b64enc <string>
 #   b64enc foo
 b64enc() {
-    variable_set "$1" || exit_error "string argument required"
+    variable_set "$1" || return_error "string argument required"
     echo -n "$1" | base64
 }
 
@@ -58,6 +58,31 @@ b64enc() {
 #   b64dec <string>
 #   b64dec Zm9v
 b64dec() {
-    variable_set "$1" || exit_error "string argument required"
+    variable_set "$1" || return_error "string argument required"
     echo -n "$1" | base64 -d
 }
+
+# description:
+#   encrypt file
+# arguments:
+#   file - file to encrypt
+# usage:
+#   fencrypt <file>
+#   fencrypt foobar.txt
+fencrypt() {
+    variable_set "$1" || return_error "file argument required"
+    openssl enc -aes-256-cbc -e -pbkdf2 -iter 10000 -in "$1" -out "$1".enc
+}
+
+# description:
+#   decrypt file
+# arguments:
+#   file - file to decrypt
+# usage:
+#   fdecrypt <file>
+#   fdecrypt foobar.txt.enc
+fdecrypt() {
+    variable_set "$1" || return_error "file argument required"
+    openssl enc -aes-256-cbc -d -pbkdf2 -iter 10000 -in "$1" -out "${1%.enc}"
+}
+

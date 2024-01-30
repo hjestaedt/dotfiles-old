@@ -148,6 +148,23 @@ if command -v kubectl >/dev/null 2>&1; then
         kubectl exec -it "$(kubectl get pods | tail -n +2 | grep -i running | awk '{print $1}' | grep "$1")" -- /bin/bash
     }
 
+    # description:
+    #   execute command in the running pod that matches the pattern
+    # arguments:
+    #   pattern - pod name pattern
+    # usage:
+    #   kctl_exec <pattern> <command>
+    #   e.g.: kctl_exec foo ls -la
+    kctl_exec() {
+        if [ -z "$1" ]; then
+            echo "pod name pattern argument required" 1>&2;
+            return 1
+        fi
+        local pattern="$1"
+        shift
+        kubectl exec -it "$(kubectl get pods | tail -n +2 | grep -i running | awk '{print $1}' | grep "$pattern")" -- "$@"
+    }
+
     # delete all pods (optional: that match the pattern) with status different than running
     # arguments:
     #   optional: pattern - pod name pattern

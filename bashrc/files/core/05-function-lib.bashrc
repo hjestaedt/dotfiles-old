@@ -40,6 +40,20 @@ exit_error() {
 }
 
 # description:
+#   return with error code (and an optional error message)
+#   can be used in functions, where exit would exit the whole script
+# arguments:
+#   optional: message - error message
+# returns:
+#   1
+# usage:
+#   return_error [message]
+return_error() {
+    variable_set "$1" && echo "error: $1" 1>&2
+    return 1
+}
+
+# description:
 #   check if command exists
 # arguments:
 #   command - command to check
