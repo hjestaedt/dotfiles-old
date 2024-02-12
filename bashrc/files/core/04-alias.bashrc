@@ -54,3 +54,6 @@ alias sul='sudo su -l'
 alias ntl='netstat -ntl'
 alias ntlp='netstat -ntlp'
 alias lsfn="declare -F | awk '{print \$NF}' | sort | egrep -v '^_'" # print all user defined functions
+alias datetime='date "+%Y-%m-%d %H:%M:%S"'
+alias datetime-file='date "+%Y%m%d_%H%M%S"'
+alias timestamp='date +%s'
