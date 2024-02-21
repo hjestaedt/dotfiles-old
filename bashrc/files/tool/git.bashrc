@@ -40,11 +40,17 @@ if command -v git >/dev/null 2>&1; then
     alias grb='git rebase'
     alias grbi='git rebase -i'
     alias grba='git rebase --abort'
+    alias grbm='git switch main && git pull && git switch - && git rebase main'
     alias gr='git reset'
+    alias grm='git reset --mixed'
+    alias grs='git reset --soft'
     alias grh='git reset --hard'
-    alias grma='git remote add'
-    alias grmd='git remote rm'
-    alias grmv='git remote -v'
+    alias grl='git reflog'
+    alias gra='git remote add'
+    alias grd='git remote rm'
+    alias grv='git remote -v'
+    alias grm='git rm'
+    alias grmc='git rm --cached'
     alias gs='git status'
     alias gsw='git switch'
     alias gsw-='git switch -'
@@ -54,7 +60,6 @@ if command -v git >/dev/null 2>&1; then
     alias gstl='git stash list'
     alias gstc='git stash clear'
     alias gstd='git stash drop'
-    alias gswrb='git switch main && git pull && git switch - && git rebase main'
 
     # git functions
 
