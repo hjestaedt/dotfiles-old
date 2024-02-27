@@ -15,35 +15,35 @@ CONFIG_LAB["registry"]="europe-west3-docker.pkg.dev/prj-lab-holger-jestaedt/prj-
 
 declare -A CONFIG_RX_HJESTAEDT
 CONFIG_RX_HJESTAEDT["name"]="rx-hjestaedt"
-CONFIG_RX_HJESTAEDT["context"]="ce-rx-dev"
+CONFIG_RX_HJESTAEDT["context"]="gke_prj-rx-dev-ce-5a59_europe-west3_ce-rx-dev-euw3-1"
 CONFIG_RX_HJESTAEDT["namespace"]="holger-jestaedt-dev"
 CONFIG_RX_HJESTAEDT["registry"]="europe-docker.pkg.dev/prj-flyr-dev-registry/registry"
 CONFIG_RX_HJESTAEDT["tenant"]="rx"
 
 declare -A CONFIG_RX_LOCAL
 CONFIG_RX_LOCAL["name"]="rx-local"
-CONFIG_RX_LOCAL["context"]="ce-rx-dev"
+CONFIG_RX_LOCAL["context"]="gke_prj-rx-dev-ce-5a59_europe-west3_ce-rx-dev-euw3-1"
 CONFIG_RX_LOCAL["namespace"]="airlift-local-dev"
 CONFIG_RX_LOCAL["registry"]="europe-docker.pkg.dev/prj-flyr-dev-registry/registry"
 CONFIG_RX_LOCAL["tenant"]="rx"
 
 declare -A CONFIG_RX_DEV
 CONFIG_RX_DEV["name"]="rx-dev"
-CONFIG_RX_DEV["context"]="ce-rx-dev"
+CONFIG_RX_DEV["context"]="gke_prj-rx-dev-ce-5a59_europe-west3_ce-rx-dev-euw3-1"
 CONFIG_RX_DEV["namespace"]="airlift"
 CONFIG_RX_DEV["registry"]="europe-docker.pkg.dev/prj-flyr-dev-registry/registry"
 CONFIG_RX_DEV["tenant"]="rx"
 
 declare -A CONFIG_RX_STG
 CONFIG_RX_STG["name"]="rx-stg"
-CONFIG_RX_STG["context"]="ce-rx-stg"
+CONFIG_RX_STG["context"]="gke_prj-rx-stg-ce-ea8b_europe-west3_ce-rx-stg-euw3-2"
 CONFIG_RX_STG["namespace"]="airlift"
 CONFIG_RX_STG["registry"]="europe-docker.pkg.dev/prj-flyr-dev-registry/registry"
 CONFIG_RX_STG["tenant"]="rx"
 
 declare -A CONFIG_DEMO_DEV
 CONFIG_DEMO_DEV["name"]="demo-dev"
-CONFIG_DEMO_DEV["context"]="ce-rx-dev"
+CONFIG_DEMO_DEV["context"]="gke_prj-rx-dev-ce-5a59_europe-west3_ce-rx-dev-euw3-1"
 CONFIG_DEMO_DEV["namespace"]="airlift-demo"
 CONFIG_DEMO_DEV["registry"]="europe-docker.pkg.dev/prj-flyr-dev-registry/registry"
 CONFIG_DEMO_DEV["tenant"]="demo"
