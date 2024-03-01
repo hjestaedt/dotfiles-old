@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+alias airlift-mvn-repo='docker run --rm -it -v maven-cache:/mnt alpine sh'
+
 export SKAFFOLD_NAMESPACE="airlift-local-dev"
 NAMESPACE_ENV_VAR="SKAFFOLD_NAMESPACE"
 export SKAFFOLD_TENANT="rx"
