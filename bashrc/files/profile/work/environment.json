@@ -1,0 +1,32 @@
+[
+  {
+    "id": "lab",
+    "context": "lab",
+    "namespace": "lab-default",
+    "registry": "europe-west3-docker.pkg.dev/prj-lab-holger-jestaedt/lab-repository-docker-dev"
+  },
+  {
+    "id": "rx-dev-ce",
+    "context": "rx-dev-ce",
+    "namespace": "holger-jestaedt-dev",
+    "registry": "europe-docker.pkg.dev/prj-flyr-dev-registry/registry"
+  },
+  {
+    "id": "rx-stg-ce",
+    "context": "rx-stg-ce",
+    "namespace": "default",
+    "registry": "europe-docker.pkg.dev/prj-flyr-dev-registry/registry"
+  },
+  {
+    "id": "rx-dev-ooms",
+    "context": "rx-dev-ooms",
+    "namespace": "holger-jestaedt-dev",
+    "registry": "europe-docker.pkg.dev/prj-flyr-dev-registry/ooms"
+  },
+  {
+    "id": "rx-stg-ooms",
+    "context": "rx-stg-ooms",
+    "namespace": "default",
+    "registry": "europe-docker.pkg.dev/prj-flyr-dev-registry/ooms"
+  }
+]

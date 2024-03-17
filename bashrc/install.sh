@@ -87,7 +87,7 @@ fi
 install_files() {
     [ -n "$1" ] || exit_error "src_dir not specified"
     [ -n "$2" ] || exit_error "dst_dir not specified"
-    for file in "$1"/*.bashrc; do
+    for file in "$1"/*; do
         echo "installing $(basename "$file") to $2"
         if [ "$OVERWRITE" = true ]; then
             cp -f "$file" "$2"
