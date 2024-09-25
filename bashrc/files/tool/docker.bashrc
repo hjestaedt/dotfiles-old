@@ -21,12 +21,3 @@ if command -v docker >/dev/null 2>&1; then
 
     # docker functions
 fi
-
-# docker-compose
-
-if command -v docker-compose >/dev/null 2>&1; then
-    # docker-compose aliases
-    alias doco='docker.bashrc compose'
-
-    # docker-compose functions
-fi
