@@ -1,0 +1,2 @@
+- add installation script (e.g. sh $(curl https://hjestaedt.dev/dotfiles/install.sh))
+- cleanup and make it work for multiple os (linux, macos, freebsd, windows)

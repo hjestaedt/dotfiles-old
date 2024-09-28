@@ -12,9 +12,9 @@ alias d-='popd'
 # ls
 alias ls='ls --color'
 alias l='ls'
-alias ll='ls -l'
-alias la='ls -la'
-alias lt='ls -ltra'
+alias ll='ls -lh'
+alias la='ls -lha'
+alias lt='ls -lhtra'
 alias l.='ls -d .*'
 
 # safety
