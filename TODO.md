@@ -1,2 +1,12 @@
-- add installation script (e.g. sh $(curl https://hjestaedt.dev/dotfiles/install.sh))
-- cleanup and make it work for multiple os (linux, macos, freebsd, windows)
+# TODO
+
+- add installation scripts
+  - tmux (cleanup)
+  - bashrc
+  - vim config
+
+- bashrc
+  - cleanup
+  - profiles: home, work, remote, ?
+  - os: linux, macos, freebsd, windows?
+

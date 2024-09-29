@@ -9,3 +9,4 @@
 [._]sw[a-p]
 
 bashrc/.user_env
+.DS_Store
