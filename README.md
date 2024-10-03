@@ -1,6 +1,5 @@
-# bashrc
+# dotfiles
 
-- home verzeichnis setup
-- custom-ls installieren
-- check vars, permissions, etc
-- error handling
+https://hjestaedt.github.io/dotfiles/
+
+tmux: `bash <(curl https://hjestaedt.github.io/dotfiles/tmux/install.sh)`
