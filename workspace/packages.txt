@@ -1,0 +1,8 @@
+coreutils
+sudo
+vim
+tree
+tmux
+curl
+ca-certificates
+git

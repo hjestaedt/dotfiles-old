@@ -1,0 +1,16 @@
+services:
+  workspace:
+    image: workspace/dotfiles
+    stop_grace_period: 0s
+    build: 
+      context: .
+      args:
+        USER_NAME: ${USER_NAME}
+
+    container_name: ${WORKSPACE_NAME}
+    volumes:
+      - ./../:/home/${USER_NAME}/dotfiles
+    tty: true
+
+    hostname: ${WORKSPACE_NAME}
+    working_dir: /home/${USER_NAME}/dotfiles
