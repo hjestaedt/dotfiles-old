@@ -24,6 +24,8 @@ if command -v git >/dev/null 2>&1; then
     alias gs='git status'
     alias gdf='git diff'
     alias gdfs='git diff --staged'
+    alias gdft='git difftool'
+    alias gdfts='git difftool --staged'
     alias gco='git commit'
     alias gcom='git commit -m'
     alias gcoa='git commit -a'

@@ -5,8 +5,8 @@ TMUX_CONF_BACKUP="$HOME/.tmux.conf.backup_$(date +%Y%m%d_%H%M%S)"
 TPM_DIR="$HOME/.tmux/plugins/tpm"
 TMP_CONF="$HOME/.tmux.conf.tmp"
 
-TMUX_URL="https://raw.githubusercontent.com/hjestaedt/dotfiles/main/tmux/tmux.conf"
-TMUX_URL_BASE="https://raw.githubusercontent.com/hjestaedt/dotfiles/main/tmux/tmux-base.conf"
+TMUX_URL="https://raw.githubusercontent.com/hjestaedt/dotfiles/main/tmux/tmux.config"
+TMUX_URL_BASE="https://raw.githubusercontent.com/hjestaedt/dotfiles/main/tmux/tmux-base.config"
 
 
 # clean up temporary files on exit
