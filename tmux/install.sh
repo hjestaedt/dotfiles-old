@@ -1,19 +1,16 @@
 #!/bin/bash
 
-TMUX_CONF="$HOME/.tmux.conf"
-TMUX_CONF_BACKUP="$HOME/.tmux.conf.backup_$(date +%Y%m%d_%H%M%S)"
-TPM_DIR="$HOME/.tmux/plugins/tpm"
-TMP_CONF="$HOME/.tmux.conf.tmp"
+CONF_DIR="${HOME}/.config/tmux"
+CONF_FILE="${CONF_DIR}/tmux.conf"
+CONF_FILE_BACKUP="${CONF_FILE}_$(date +%Y%m%d_%H%M%S)"
+CONF_FILE_TMP="${CONF_FILE}.tmp"
+TPM_DIR="${CONF_DIR}/plugins/tpm"
 
-TMUX_URL="https://raw.githubusercontent.com/hjestaedt/dotfiles/main/tmux/tmux.conf"
-TMUX_URL_BASE="https://raw.githubusercontent.com/hjestaedt/dotfiles/main/tmux/tmux-base.conf"
+CONF_DOWNLOAD_FULL="https://hjestaedt.github.io/dotfiles/tmux/tmux.conf"
+CONF_DOWNLOAD_BASE="https://hjestaedt.github.io/dotfiles/tmux/tmux-base.conf"
 
-
-# clean up temporary files on exit
-cleanup() {
-    [ -f "$TMP_CONF" ] && rm -f "$TMP_CONF"
-}
-trap cleanup EXIT
+DOWNLOAD_URL=
+INSTALL_TPM=
 
 
 # check if tmux is installed
@@ -25,12 +22,28 @@ check_tmux_installed() {
 }
 
 
+# clean up temporary files on exit
+cleanup() {
+    [ -f "$CONF_FILE_TMP" ] && rm -f "$CONF_FILE_TMP"
+}
+trap cleanup EXIT
+
+
+# create tmux config directory if it does not exist
+create_tmux_home() {
+    if [ ! -d "$CONF_DIR" ]; then
+        echo "creating tmux config directory $CONF_DIR"
+        mkdir -p "$CONF_DIR"
+    fi
+}
+
+
 # download tmux.conf to a temporary file
 download_tmux_conf() {
     echo "downloading new tmux.conf..."
     
-    if ! curl -sSfLo "$TMP_CONF" "$DOWNLOAD_URL"; then
-        echo "failed to download tmux.conf"
+    if ! curl -sSfLo "$CONF_FILE_TMP" "$DOWNLOAD_URL"; then
+        echo "failed to download conf file from $DOWNLOAD_URL"
         return 1
     fi
     return 0
@@ -39,22 +52,22 @@ download_tmux_conf() {
 
 # backup the existing tmux.conf
 backup_tmux_conf() {
-    echo "backing up existing .tmux.conf to $TMUX_CONF_BACKUP"
-    mv "$TMUX_CONF" "$TMUX_CONF_BACKUP"
+    echo "backing up existing .tmux.conf to $CONF_FILE_BACKUP"
+    mv "$CONF_FILE" "$CONF_FILE_BACKUP"
 }
 
 
 # install the new tmux.conf
 install_tmux_conf() {
-    mv "$TMP_CONF" "$TMUX_CONF"
-    chmod 644 "$TMUX_CONF"
-    echo "tmux.conf installed at $TMUX_CONF"
+    mv "$CONF_FILE_TMP" "$CONF_FILE"
+    chmod 644 "$CONF_FILE"
+    echo "tmux.conf installed at $CONF_FILE"
 }
 
 
 # handle case where tmux.conf already exists
 handle_existing_tmux_conf() {
-    echo "$TMUX_CONF already exists."
+    echo "$CONF_FILE already exists."
     while true; do
         read -r -p "do you want to to override the existing file? (y/n): " user_input
         case "$user_input" in
@@ -99,20 +112,23 @@ install_tpm() {
 }
 
 
+#
 # main script 
+#
+
 check_tmux_installed
 
 while true; do
-    read -r -p "do you also want to install the tmux plugin manager (tpm)) (y/n)? " tpm_input
+    read -r -p "do you want to install tpm (tmux plugin manager)? (y/n) " tpm_input
     case "$tpm_input" in
         [Yy]* )
-            DOWNLOAD_URL=$TMUX_URL
             INSTALL_TPM=true
+            DOWNLOAD_URL=$CONF_DOWNLOAD_FULL
             break
             ;;
         [Nn]* )
-            DOWNLOAD_URL=$TMUX_URL_BASE
             INSTALL_TPM=false
+            DOWNLOAD_URL=$CONF_DOWNLOAD_BASE
             break
             ;;
         * )
@@ -121,9 +137,10 @@ while true; do
     esac
 done
 
-if [ -f "$TMUX_CONF" ]; then
+if [ -f "$CONF_FILE" ]; then
     handle_existing_tmux_conf
 else
+    create_tmux_home
     if download_tmux_conf; then
         install_tmux_conf
         if $INSTALL_TPM; then 
