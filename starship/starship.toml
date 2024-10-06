@@ -1,0 +1,124 @@
+# Get editor completions based on the config schema
+'$schema' = 'https://starship.rs/config-schema.json'
+
+palette = 'nord'
+add_newline = true
+
+format = """
+$directory\
+$username\
+$hostname\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$kubernetes\
+$docker_context\
+$jobs\
+$battery\
+$line_break\
+$container\
+$character"""
+
+[username]
+format = '[$user]($style)'
+style_root = 'bold nord11'
+style_user = 'bold nord5'
+
+[hostname] 
+ssh_only = true
+format = '@[$hostname]($style)  '
+style = 'bold nord5'
+
+[directory]
+format = '[$path]($style)  '
+truncation_length = 8
+truncation_symbol = '…/'
+truncate_to_repo = false 
+style = 'bold nord9'
+
+[git_branch]
+format = '$symbol [$branch(:$remote_branch)]($style) '
+symbol = '󰘬'
+truncation_length = 64 
+truncation_symbol = '…'
+style = 'nord8'
+
+[git_commit]
+format = '[\($hash$tag\)]($style) '
+tag_disabled = false
+tag_symbol = '  '
+style = 'nord8'
+
+[git_state]
+style = 'nord8'
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) ) '
+ahead = 'a${count}'
+diverged = 'a${ahead_count}b${behind_count}'
+behind = 'b${count}'
+style = 'nord12'
+
+[kubernetes]
+disabled = false
+detect_files = ['k8s', 'skaffold.yaml']
+format = '$symbol [$context( \($namespace\))]($style)  '
+symbol = '⎈'
+style = 'nord8'
+
+[docker_context]
+format = '$symbol [$context]($style)  '
+symbol = ''
+style = 'nord8'
+
+[jobs] 
+format = '$symbol [$number]($style)  '
+symbol = ''
+style = 'nord8'
+number_threshold = 1
+symbol_threshold = 1
+
+[battery]
+format = '$symbol [$percentage]($style) '
+
+[[battery.display]]
+threshold = 10 
+style = 'bold nord11'
+discharging_symbol = '󰁺'
+
+[[battery.display]]
+threshold = 20 
+style = 'bold nord13'
+discharging_symbol = '󰁻'
+
+[character] 
+success_symbol = '[❯](bold nord10)'
+error_symbol = '[❯](bold nord11)'
+
+
+# color scheme nord
+[palettes.nord]
+# Polar Night
+nord0 = '#2E3440'
+nord1 = '#3B4252'
+nord2 = '#434C5E'
+nord3 = '#4C566A'
+
+# Snow Storm
+nord4 = '#D8DEE9'
+nord5 = '#E5E9F0'
+nord6 = '#ECEFF4'
+
+# Frost
+nord7 = '#8FBCBB'
+nord8 = '#88C0D0'
+nord9 = '#81A1C1'
+nord10 = '#5E81AC'
+
+# Aurora
+nord11 = '#BF616A'  # Red accent
+nord12 = '#D08770'  # Orange accent
+nord13 = '#EBCB8B'  # Yellow accent
+nord14 = '#A3BE8C'  # Green  accent
+nord15 = '#B48EAD'  # Purple accent
