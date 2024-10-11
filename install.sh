@@ -11,3 +11,8 @@ if [[ "$starship" =~ ^[Yy]$ ]]; then
     echo "Installing starship configuration..."
     /usr/bin/env bash <(curl https://hjestaedt.github.io/dotfiles/starship/install.sh)
 fi
+
+read -p "Do you want to install dircolors config? (y/n): " dircolors 
+if [[ "$dircolors" =~ ^[Yy]$ ]]; then
+    echo "Installing dircolors configuration..."
+    /usr/bin/env bash <(curl https://hjestaedt.github.io/dotfiles/dircolors/install.sh)

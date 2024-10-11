@@ -13,6 +13,7 @@ https://hjestaedt.github.io/dotfiles/
 - all: `bash <(curl https://hjestaedt.github.io/dotfiles/install.sh)`  
 - tmux: `bash <(curl https://hjestaedt.github.io/dotfiles/tmux/install.sh)`  
 - starship: `bash <(curl https://hjestaedt.github.io/dotfiles/starship/install.sh)`
+- dircolors: `bash <(curl https://hjestaedt.github.io/dotfiles/dircolors/install.sh)`
 
 ## references
 - Nerd Fonts Downloads: https://www.nerdfonts.com/font-downloads
